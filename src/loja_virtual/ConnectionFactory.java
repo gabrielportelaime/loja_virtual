@@ -1,15 +1,30 @@
 package loja_virtual;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import javax.sql.DataSource;
+
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+
 public class ConnectionFactory {
-	//Classe para criar a conexão com o banco de dados
+	// Classe para criar a conexão com o banco de dados
+
+	public DataSource dataSource;
+
+	public ConnectionFactory() {
+		ComboPooledDataSource comboPooledDataSource = new ComboPooledDataSource();
+		comboPooledDataSource.setJdbcUrl("jdbc:mysql://localhost/loja_virtual?useTimezone=true&serverTimezone=UTC");
+		comboPooledDataSource.setUser("root");
+		comboPooledDataSource.setPassword("sefaz123");
+
+		comboPooledDataSource.setMaxPoolSize(15);
+
+		this.dataSource = comboPooledDataSource;
+	}
+
 	public Connection recuperarConexao() throws SQLException {
-		//Método para realizar a conexão
-		return DriverManager.
-				getConnection("jdbc:mysql://localhost/loja_virtual?useTimezone=true&serverTimezone=UTC", "root", "sefaz123");
-		//Retorna a conexão
+		// Método para realizar a conexão
+		return dataSource.getConnection();
 	}
 }

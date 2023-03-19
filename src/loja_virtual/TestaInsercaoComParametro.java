@@ -16,10 +16,8 @@ public class TestaInsercaoComParametro {
 			// Para não precisar fechar a connection, pode-se usar o try, as chaves fecham
 			// onde seria o connection.close
 			connection.setAutoCommit(false);
-			try(
-				PreparedStatement stm = connection.prepareStatement(
-					"INSERT INTO PRODUTO (nome, descricao) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS)
-				){
+			try (PreparedStatement stm = connection.prepareStatement(
+					"INSERT INTO PRODUTO (nome, descricao) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS)) {
 				// Garante que a conexão irá ser fechada, mesmo que a aplicação apresente erro
 				// O PreparedStatement é a classe que recebe uma query preparada para não
 				// receber SQL Injection
