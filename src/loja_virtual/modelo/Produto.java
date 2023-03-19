@@ -12,6 +12,13 @@ public class Produto {
 		this.nome = nome;
 		this.descricao = descricao;
 	}
+	
+	public Produto(Integer id, String nome, String descricao) {
+		// Construtor da classe Produto com todos os atributos
+		this.id = id;
+		this.nome = nome;
+		this.descricao = descricao;
+	}
 
 	public String getNome() {
 		return nome;
@@ -29,7 +36,7 @@ public class Produto {
 	public String toString() {
 		// Método sobrescrito para quando for chamando o sysou com o Produto dentro,
 		// mostrar id, nome e descricao
-		return String.format("O produto criado foi: %d, %s, %s", this.id, this.nome, this.descricao);
+		return String.format("O produto é: %d, %s, %s", this.id, this.nome, this.descricao);
 	}
 
 }

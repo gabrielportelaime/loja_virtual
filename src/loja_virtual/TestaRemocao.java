@@ -9,7 +9,7 @@ public class TestaRemocao {
 		ConnectionFactory factory = new ConnectionFactory();
 		Connection conexao = factory.recuperarConexao();
 		PreparedStatement stm = conexao.prepareStatement("DELETE FROM PRODUTO WHERE ID > ?");
-		stm.setInt(1, 7);
+		stm.setInt(1, 17);
 		stm.execute();
 		Integer linhas = stm.getUpdateCount();
 		System.out.println("Quantidade de linhas que foram modificadas: " + linhas);
